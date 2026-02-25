@@ -11,6 +11,8 @@ variables:
   warehouse_id:
     description: "SQL Warehouse ID a Gold réteghez"
     default: your_warehouse_id_here
+  notification_emails:
+    description: "E-mail értesítések hiba esetén"
 
 targets:
   dev:
@@ -56,5 +58,5 @@ resources:
               catalog: ${var.catalog_name}
               schema: ${var.schema_name}
 
-     email_notifications:
+      email_notifications:
         on_failure: ${var.notification_emails}

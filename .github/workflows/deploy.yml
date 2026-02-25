@@ -11,7 +11,7 @@ jobs:
       - name: Install Databricks CLI
         run: curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
       - name: Deploy Bundle
-        run: databricks bundle deploy -t prod
+        run: databricks bundle deploy -t prod --var="notification_emails=${{ secrets.NOTIFICATION_EMAILS }}"
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
