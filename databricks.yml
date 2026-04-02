@@ -52,7 +52,8 @@ resources:
           depends_on:
             - task_key: python_bronze_silver
           sql_task:
-            file: ./resources/gold_views.sql
+            file:
+              path: ./resources/gold_views.sql
             warehouse_id: ${var.warehouse_id}
             parameters:
               catalog: ${var.catalog_name}
