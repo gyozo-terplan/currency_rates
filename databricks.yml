@@ -10,23 +10,15 @@ variables:
     default: mnb_data
   warehouse_id:
     description: "SQL Warehouse ID a Gold réteghez"
-    default: your_warehouse_id_here
+    default: ${var.warehouse_id}
   notification_emails:
     description: "E-mail értesítések hiba esetén"
 
 targets:
   dev:
-    workspace:
-      host: https://adb-xxx-dev.azuredatabricks.net
     variables:
       catalog_name: dev_mnb_catalog
       schema_name: mnb_sandbox
-  prod:
-    workspace:
-      host: https://adb-xxx-prod.azuredatabricks.net
-    variables:
-      catalog_name: prod_mnb_catalog
-      schema_name: mnb_production
 
 resources:
   jobs:
