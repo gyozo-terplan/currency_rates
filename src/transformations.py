@@ -5,7 +5,11 @@ def get_inner_xml(soap_xml):
     root = ET.fromstring(soap_xml)
     for elem in root.iter():
         if "GetExchangeRatesResult" in elem.tag:
-            return elem.text
+            if len(elem) == 0:
+                return elem.text
+            for child in elem.iter():
+                child.tag = child.tag.split('}', 1)[-1] if '}' in child.tag else child.tag
+            return ET.tostring(elem[0], encoding="unicode")
     return None
 
 def parse_mnb_rows(inner_xml_str):
